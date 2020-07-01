@@ -26,7 +26,7 @@ import logging
 app = Flask(__name__)
 app.config.from_object(Config)
 
-logging.warning("APP STARTED")
+# logging.warning("APP STARTED")
 
 
 @app.errorhandler(404)
