@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Hive Project</title>
+        {% endif %}
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/55a47d7d93.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        {% include 'navigation.html' %}
+
+        {% block content %}{% endblock %}
+
+        </div>
+
+    </body>
+</html>

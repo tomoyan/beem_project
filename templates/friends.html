@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Friends</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/55a47d7d93.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // by default hide all content div elements
+                // except first element
+                $(".content .tab_content").hide()
+                $(".content .tab_content:first-child").show()
+
+                // when any li(tab) clicked, add the active class
+                // to the clicked li(tab) and remove the active class
+                // to remaining li(tab) elements
+                $("ul li").click(function(){
+                    $("ul li").removeClass("active");
+                    $(this).addClass("active");
+
+                    // get the attribute value of the clicked li(tab)
+                    // and show the tab content div element which matches
+                    // the attribute value and hide the remaining
+                    // tab content div elements
+                    var current_tab_value = $(this).attr("data-list");
+                    $(".content .tab_content").hide()
+                    $("."+current_tab_value).show();
+
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        {% include 'navigation.html' %}
+
+        <div class="wrapper">
+            <div class="tabs">
+                <ul>
+                    <li class="active" data-list=tab_1>
+                        <span style="font-size: 25px;">
+                            <i class="fas fa-address-book"></i>
+                        </span>
+                        <!-- <img src="{{ url_for('static', filename='/images/002.png') }}" alt="follower_img"> -->
+                        <p>Followers</p>
+                    </li>
+
+                    <li data-list=tab_2>
+                        <span style="font-size: 25px;">
+                            <i class="far fa-address-book"></i>
+                        </span>
+                        <!-- <img src="{{ url_for('static', filename='/images/003.png') }}" alt="following_img"> -->
+                        <p>Following</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <div class="tab_content tab_1">
+                    {% for f_data in data['followers'] %}
+                    <li>
+                        <img src="https://images.hive.blog/u/{{ f_data }}/avatar"
+                            onerror="this.onerror=null;
+                            this.src='https://images.hive.blog/u/hiveonboard/avatar'"
+                            alt="avatar">
+                        <a href="hive.blog/@{{ f_data }}"> @{{ f_data }}</a>
+                        {% if data['followers'][f_data] %}
+                            <label>Following</label>
+                        {% else %}
+                            <!-- do something later -->
+                        {% endif  %}
+                    </li>
+                    {% endfor %}
+                </div>
+                <div class="tab_content tab_2">
+                    {% for f_data in data['following'] %}
+                    <li>
+                        <img src="https://images.hive.blog/u/{{ f_data }}/avatar"
+                            onerror="this.onerror=null;
+                            this.src='https://images.hive.blog/u/hiveonboard/avatar'"
+                            alt="avatar">
+                        <a href="hive.blog/@{{ f_data }}"> @{{ f_data }}</a>
+                        {% if data['following'][f_data] %}
+                            <label>Following you</label>
+                        {% else %}
+                            <!-- do something later -->
+                        {% endif  %}
+                    </li>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

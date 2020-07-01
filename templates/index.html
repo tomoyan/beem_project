@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+
+<div class="formwrapper">
+    <h2 class="title">Friends List</h2>
+        <form method="POST" action="/">
+            <!-- used to protect the form against csrf attacks -->
+            {{ form.hidden_tag() }}
+
+            <div class="form-field">
+                {{ form.username.label }}
+                {{ form.username(size=32) }}
+
+                {% if form.username.errors %}
+                <ul class="errors">
+                    {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {{ form.submit }}
+            </div>
+
+  </form>
+</div>
+
+<hr>
+{% endblock %}
