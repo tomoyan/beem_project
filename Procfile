@@ -1,1 +1,1 @@
-web: gunicorn beemtool.wsgi --log-file -
+web: gunicorn app:app
