@@ -70,18 +70,20 @@ def get_friends_data(username, follow_type):
     # logging.warning(hive.config.items())
 
     # Create account object
-    account = Account(username)
+    try:
+        account = Account(username)
+        logging.warning(account)
+    except Exception as e:
+        logging.warning(e)
+        return {}
 
-    if account:
-        followers = account.get_followers()
-        following = account.get_following()
+    followers = account.get_followers()
+    following = account.get_following()
 
-        if follow_type == 'followers':
-            return make_dict(followers, following)
-        else:
-            return make_dict(following, followers)
+    if follow_type == 'followers':
+        return make_dict(followers, following)
     else:
-        return None
+        return make_dict(following, followers)
 
 
 def make_dict(data_list, find_list):
