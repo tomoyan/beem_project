@@ -39,7 +39,8 @@ def not_found(e):
 def index():
     form = UserNameForm()
     if form.validate_on_submit():
-        username = form.username.data
+        username = form.username.data.lower()
+        logging.warning(username)
         # return redirect(url_for('friends'))
         return redirect('/friends/' + username)
 
