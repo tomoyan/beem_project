@@ -1,6 +1,7 @@
 """
 ACTIVATE VENV
 source venv/Scripts/activate
+Windows command: venv/Scripts/activate
 
 RUN FLASK APP
 export FLASK_APP=app.py
