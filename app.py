@@ -40,7 +40,7 @@ def index():
     form = UserNameForm()
     if form.validate_on_submit():
         username = form.username.data.lower()
-        logging.warning(username)
+
         # return redirect(url_for('friends'))
         return redirect('/friends/' + username)
 
@@ -53,7 +53,7 @@ def index():
 def friends(username=None):
     data = {}
     if username:
-        username = escape(username)
+        username = escape(username).lower()
         data['followers'] = get_friends_data(username, 'followers')
         data['following'] = get_friends_data(username, 'following')
 
