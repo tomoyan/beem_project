@@ -6,6 +6,11 @@ RUN FLASK APP
 export FLASK_APP=app.py
 export FLASK_ENV=development
 flask run
+
+PUSH TO GITHUB
+git add .
+git commit -m ""
+git push -u origin master
 """
 from beem import Hive
 from beem.nodelist import NodeList
