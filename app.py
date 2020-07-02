@@ -12,6 +12,12 @@ PUSH TO GITHUB
 git add .
 git commit -m ""
 git push -u origin master
+
+PUSH TO HEROKU
+git push heroku master
+
+Add Libraries and Create a requirements.txt File
+pip freeze > requirements.txt
 """
 from beem import Hive
 from beem.nodelist import NodeList
