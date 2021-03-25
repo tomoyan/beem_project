@@ -20,7 +20,7 @@ prettytable==0.7.2
 pycryptodomex==3.9.8
 pylibscrypt==1.8.0
 pytz==2020.1
-PyYAML==5.3.1
+PyYAML==5.4
 requests==2.24.0
 scrypt==0.8.15
 six==1.15.0
