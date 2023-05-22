@@ -21,7 +21,7 @@ pycryptodomex==3.9.8
 pylibscrypt==1.8.0
 pytz==2020.1
 PyYAML==5.4
-requests==2.24.0
+requests==2.31.0
 scrypt==0.8.15
 six==1.15.0
 urllib3==1.26.5
